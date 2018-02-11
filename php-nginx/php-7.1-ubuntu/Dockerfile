@@ -3,6 +3,10 @@ FROM ubuntu:16.04
 
 RUN export DEBIAN_FRONTEND=noninteractive
 
+# Set to working mirrors that won't cause Hash sum mismatch errors on MacOS
+RUN sed -i '1ideb http://mirror.onet.pl/pub/mirrors/ubuntu/ xenial main' /etc/apt/sources.list
+RUN sed -i '1ideb-src http://mirror.onet.pl/pub/mirrors/ubuntu/ xenial main' /etc/apt/sources.list
+
 # Update packages list and system
 RUN apt-get -y update
 RUN apt-get -y upgrade
