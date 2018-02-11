@@ -1,5 +1,6 @@
-# Display full hostname in prompt
-export PS1="\u@\H:\w\$"
+# Display full hostname in prompt and set term title
+export PS1="\033[01;32m\]\u@\H\033[00m\]:\033[01;34m\]\w\$\033[00m\]"
+export PROMPT_COMMAND='echo -ne "\033]0;$HOSTNAME \007"
 
 # Set timezone
 export TZ="Europe/Warsaw"
@@ -27,6 +28,11 @@ alias phpunit="vendor/bin/phpunit"
 
 # Alias for root project directory
 alias www="cd /usr/share/nginx/html/"
+
+# Enable colors for ls
+if [ -x /usr/bin/dircolors ]; then
+    alias ls='ls --color=auto'
+fi
 
 # Start in website directory by default
 cd /usr/share/nginx/html/
