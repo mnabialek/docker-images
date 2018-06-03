@@ -37,8 +37,5 @@ service cron start
 # Run redis
 service redis-server start
 
-# Disable Xdebug for command line
-phpdismod -s cli xdebug
-
 # Start supervisor
 supervisord -n
