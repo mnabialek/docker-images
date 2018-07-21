@@ -26,6 +26,9 @@ alias a="php artisan"
 # Alias for PHPUnit
 alias phpunit="vendor/bin/phpunit"
 
+# Alias for php-cs-fixer
+alias codefix="vendor/bin/php-cs-fixer --verbose fix"
+
 # Alias for root project directory
 alias www="cd /usr/share/nginx/html/"
 
