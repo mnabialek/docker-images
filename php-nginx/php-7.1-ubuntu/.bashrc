@@ -1,5 +1,5 @@
 # Display full hostname in prompt and set term title
-export PS1="\033[01;32m\]\u@\H\033[00m\]:\033[01;34m\]\w\$\033[00m\]"
+export PS1="\[\e[32m\]\u@\H:\[\e[36m\]\w\[\e[32m\]\$\[\e[0m\]"
 export PROMPT_COMMAND='echo -ne "\033]0;$HOSTNAME \007"
 
 # Set timezone
