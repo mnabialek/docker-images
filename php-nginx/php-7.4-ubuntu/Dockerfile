@@ -4,8 +4,8 @@ FROM ubuntu:16.04
 RUN export DEBIAN_FRONTEND=noninteractive
 
 # Set to working mirrors that won't cause Hash sum mismatch errors on MacOS
-RUN sed -i '1ideb http://mirror.onet.pl/pub/mirrors/ubuntu/ xenial main' /etc/apt/sources.list
-RUN sed -i '1ideb-src http://mirror.onet.pl/pub/mirrors/ubuntu/ xenial main' /etc/apt/sources.list
+RUN sed -i '1ideb http://ftp.icm.edu.pl/pub/Linux/ubuntu// xenial main' /etc/apt/sources.list
+RUN sed -i '1ideb-src http://ftp.icm.edu.pl/pub/Linux/ubuntu/ xenial main' /etc/apt/sources.list
 
 # Update packages list and system
 RUN apt-get -y update
@@ -41,7 +41,7 @@ php7.4-pgsql php7.4-sqlite3 php7.4-gd \
 php7.4-curl php7.4-memcached \
 php7.4-imap php7.4-mysql php7.4-mbstring \
 php7.4-xml php7.4-zip php7.4-bcmath php7.4-soap \
-php7.4-intl php7.4-readline php-xdebug php-pear
+php7.4-intl php7.4-readline php-xdebug php-pear php-redis
 
 # Install Composer globally
 RUN curl -sS https://getcomposer.org/installer | php
