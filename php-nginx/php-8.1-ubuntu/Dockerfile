@@ -1,5 +1,5 @@
 # Base image
-FROM ubuntu:16.04
+FROM ubuntu:20.04
 
 RUN export DEBIAN_FRONTEND=noninteractive
 
@@ -21,7 +21,6 @@ RUN locale-gen en_US.UTF-8
 # Add some packages
 RUN LC_ALL=C.UTF-8 add-apt-repository ppa:ondrej/php -y
 RUN apt-add-repository ppa:chris-lea/redis-server -y
-RUN apt-add-repository ppa:nginx/development -y
 RUN apt-key update
 RUN apt-get -y update
 
@@ -61,8 +60,8 @@ RUN service nginx restart
 RUN sed -i "s/# server_names_hash_bucket_size.*/server_names_hash_bucket_size 64;/" /etc/nginx/nginx.conf
 
 # Install supervisor (using easy_install to get latest version)
-RUN apt-get install --yes python-setuptools
-RUN easy_install supervisor
+RUN apt install --yes python3-pip
+RUN pip3 install supervisor
 RUN echo_supervisord_conf > /etc/supervisord.conf
 RUN mkdir /etc/supervisor/
 
