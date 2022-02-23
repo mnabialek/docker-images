@@ -33,6 +33,9 @@ RUN apt-get install -y libxml2-dev
 # Install Zlib to install Zip PHP extension
 RUN apt-get install -y zlib1g-dev
 
+# Remove default PHP installation
+RUN apt-get purge php8.0.*
+
 # Install PHP
 RUN apt-get install -y --allow-downgrades --allow-remove-essential --allow-change-held-packages \
 php8.1-cli php8.1-fpm php8.1-dev \
