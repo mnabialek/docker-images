@@ -76,12 +76,10 @@ RUN sed -i -e "s#;files = relative/directory/\*.ini#files = /etc/supervisor/conf
 # Set PHP to listen on given port instead of unix socket
 RUN sed -i -e 's#listen = \/run\/php\/php8.1-fpm.sock#listen = 0.0.0.0:9000#g' /etc/php/8.1/fpm/pool.d/www.conf
 
-# Install Chrome web driver and other libraries required to run Laravel Dusk tests
-RUN apt-get -y install libxpm4 libxrender1 libgtk2.0-0 \
-libnss3 libgconf-2-4 chromium-browser \
-xvfb gtk2-engines-pixbuf xfonts-cyrillic \
-xfonts-100dpi xfonts-75dpi xfonts-base \
-xfonts-scalable imagemagick x11-apps
+# Install Google Chrome to run Laravel Dusk tests
+RUN curl -LO https://dl.google.com/linux/direct/google-chrome-stable_current_amd64.deb
+RUN apt-get install -y ./google-chrome-stable_current_amd64.deb
+RUN rm google-chrome-stable_current_amd64.deb
 
 # Install Redis
 RUN apt-get -y install redis-server
