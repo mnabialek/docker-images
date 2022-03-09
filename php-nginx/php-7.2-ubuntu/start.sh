@@ -2,10 +2,11 @@
 
 # SSH - this would be useful when need to log in using password (123 here is root password)
 echo 'root:123' | chpasswd
-sed -i 's/PermitRootLogin prohibit\-password/PermitRootLogin yes/' /etc/ssh/sshd_config
+sed -i 's/#PermitRootLogin prohibit\-password/PermitRootLogin yes/' /etc/ssh/sshd_config
+sed -i 's/#PermitRootLogin yes/PermitRootLogin yes/' /etc/ssh/sshd_config
 
 # Allow www-data user to log in
-sed -i 's#www-data:/var/www:/usr/sbin/nologin#www-data:/www-data:/bin/bash#' /etc/passwd 
+sed -i 's#www-data:/var/www:/usr/sbin/nologin#www-data:/www-data:/bin/bash#' /etc/passwd
 # Set www-data password (123 here is www-data user password)
 echo 'www-data:123' | chpasswd
 
